@@ -4,7 +4,6 @@ public class MoveObjectOnClick : MonoBehaviour
 {
     public Camera mainCamera;
     public Transform planeTransform; // Transform del plano sobre el cual se harán los clics
-    public float movementSpeed = 5f;
 
     private void Update()
     {
@@ -24,9 +23,4 @@ public class MoveObjectOnClick : MonoBehaviour
         }
     }
 
-    private void MoveObject(Vector3 targetPosition)
-    {
-        // Movemos el objeto gradualmente hacia la posición objetivo
-        transform.position = Vector3.MoveTowards(transform.position, targetPosition, movementSpeed * Time.deltaTime);
-    }
 }
