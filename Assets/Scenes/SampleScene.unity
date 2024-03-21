@@ -242,6 +242,7 @@ GameObject:
   - component: {fileID: 683017829}
   - component: {fileID: 683017828}
   - component: {fileID: 683017832}
+  - component: {fileID: 683017833}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -329,7 +330,7 @@ Transform:
   m_GameObject: {fileID: 683017827}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 21.3, y: 0, z: 0}
+  m_LocalPosition: {x: 40.39, y: 0, z: -36.18}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -350,6 +351,20 @@ MonoBehaviour:
   mainCamera: {fileID: 963194227}
   planeTransform: {fileID: 18739834}
   movementSpeed: 5
+--- !u!114 &683017833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 683017827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 218254c559a8f3440a384b1b3ba9c52d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Speed: 20
+  direccion: {x: 0, y: 0, z: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -551,6 +566,8 @@ GameObject:
   - component: {fileID: 1197355725}
   - component: {fileID: 1197355726}
   - component: {fileID: 1197355727}
+  - component: {fileID: 1197355728}
+  - component: {fileID: 1197355729}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -638,7 +655,7 @@ Transform:
   m_GameObject: {fileID: 1197355720}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -1.26}
+  m_LocalPosition: {x: 0, y: 0, z: -7.6}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -685,7 +702,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1197355720}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5c3a329e86ea52844a17793c19ee6686, type: 3}
   m_Name: 
@@ -693,6 +710,39 @@ MonoBehaviour:
   target: {fileID: 683017831}
   SpeedRotation: 0.5
   Speed: 20
+--- !u!114 &1197355728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1197355720}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 107ee2db837959341904f007c42c9385, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 683017831}
+  SpeedRotation: 3
+  Speed: 5
+  CuantoSeRota: {x: 0, y: 20, z: 0}
+  cantidadMinimaDeCecania: 50
+  distanciaDeRotacion: 15
+--- !u!114 &1197355729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1197355720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e145373c79ca6904b827112de471d7a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 683017831}
+  velocidad: 20
+  maxPredictTime: 3
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
