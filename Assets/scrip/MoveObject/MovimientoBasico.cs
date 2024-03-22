@@ -15,29 +15,37 @@ public class MovimientoBasico : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.W))
+        if(Input.GetKey(KeyCode.W)|| Input.GetKey(KeyCode.S)|| Input.GetKey(KeyCode.D)|| Input.GetKey(KeyCode.A))
         {
-            print("w");
-            transform.position += transform.forward * Time.deltaTime * Speed;
-            direccion = transform.forward * Speed;
+            if (Input.GetKey(KeyCode.W))
+            {
+                print("w");
+                transform.position += transform.forward * Time.deltaTime * Speed;
+                direccion = transform.forward * Speed;
+            }
+            if (Input.GetKey(KeyCode.S))
+            {
+                print("s");
+                transform.position += transform.forward * Time.deltaTime * -Speed;
+                direccion = -transform.forward * Speed;
+            }
+            if (Input.GetKey(KeyCode.D))
+            {
+                print("d");
+                transform.position += transform.right * Time.deltaTime * Speed;
+                direccion = transform.right * Speed;
+            }
+            if (Input.GetKey(KeyCode.A))
+            {
+                print("a");
+                transform.position += transform.right * Time.deltaTime * -Speed;
+                direccion = -transform.right * Speed;
+            }
         }
-        if (Input.GetKey(KeyCode.S))
+        else
         {
-            print("s");
-            transform.position += transform.forward * Time.deltaTime * -Speed;
-            direccion = -transform.forward * Speed;
+            direccion = Vector3.zero;
         }
-        if (Input.GetKey(KeyCode.D))
-        {
-            print("d");
-            transform.position += transform.right * Time.deltaTime * Speed;
-            direccion = transform.right * Speed;
-        }
-        if (Input.GetKey(KeyCode.A))
-        {
-            print("a");
-            transform.position += transform.right * Time.deltaTime * -Speed;
-            direccion = -transform.right * Speed;
-        }
+        
     }
 }

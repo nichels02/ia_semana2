@@ -21,8 +21,6 @@ public class Seek : MonoBehaviour
         // Calcula la dirección hacia el objetivo
         Vector3 targetDirection = target.position - transform.position;
 
-        // Calcula la distancia al objetivo
-        float distance = targetDirection.magnitude;
 
 
 

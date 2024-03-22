@@ -6,38 +6,78 @@ using System.Collections.Generic;
 public class PathFollowing : MonoBehaviour
 {
     public List<Transform> pathPoints;
-    public float speed = 5f;
+    public Transform currentPoints;
+    //public float speed = 5f;
+    //public float SpeedRotation = 5f;
     public float arrivalDistance = 0.1f;
 
     private int currentPointIndex = 0;
+    public bool loop;
 
-    void Update()
+    public bool IsDrawGizmo;
+    public Color ColorGizmoPath;
+    public Color ColorGizmoCurrentPoint;
+    private void Start()
     {
-        // Verificar si se ha alcanzado el punto de destino
+        currentPoints = pathPoints[0];
+    }
+    public void NextPoint()
+    {
         if (Vector3.Distance(transform.position, pathPoints[currentPointIndex].position) < arrivalDistance)
         {
             // Avanzar al siguiente punto de la ruta
             currentPointIndex++;
-            if (currentPointIndex >= pathPoints.Count)
-            {
-                // Si se llega al final de la ruta, reiniciar desde el principio
-                currentPointIndex = 0;
-            }
+            if (loop)
+                currentPointIndex = currentPointIndex % pathPoints.Count;
+            else
+                currentPointIndex = Mathf.Clamp(currentPointIndex, 0, pathPoints.Count - 1);
+            currentPoints = pathPoints[currentPointIndex];
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (!IsDrawGizmo) return;
+        
+        if (currentPoints != null)
+        {
+            Gizmos.color = ColorGizmoCurrentPoint;
+            Gizmos.DrawSphere(currentPoints.position, 0.8f);
+        }
+        Gizmos.color = ColorGizmoPath;
+        for (int i = 0; i < pathPoints.Count-1; i++)
+        {
+            Gizmos.DrawWireSphere(pathPoints[i].position, 0.5f);
+
+            Gizmos.DrawLine(pathPoints[i].position, pathPoints[i + 1].position);
         }
 
-        // Moverse hacia el punto actual de la ruta
-        MoveTowards(pathPoints[currentPointIndex].position);
+        Gizmos.DrawWireSphere(pathPoints[pathPoints.Count - 1].position, 0.5f);
+
     }
+    //void Update()
+    //{
+    //    // Verificar si se ha alcanzado el punto de destino
+    //    if (Vector3.Distance(transform.position, pathPoints[currentPointIndex].position) < arrivalDistance)
+    //    {
+    //        // Avanzar al siguiente punto de la ruta
+    //        currentPointIndex++;
+    //        if (loop)
+    //            currentPointIndex = currentPointIndex % pathPoints.Count;
+    //        else
+    //            currentPointIndex = Mathf.Clamp(currentPointIndex, 0, pathPoints.Count-1);
+    //        //if (currentPointIndex >= pathPoints.Count)
+    //        //{
+    //        //    // Si se llega al final de la ruta, reiniciar desde el principio
+    //        //    currentPointIndex = 0;
+    //        //}
+    //    }
+    //    Vector3 targetDirection = pathPoints[currentPointIndex].position - transform.position;
+    //    transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(targetDirection.normalized), SpeedRotation * Time.deltaTime);
 
-    void MoveTowards(Vector3 targetPosition)
-    {
-        // Calcular la dirección hacia el punto de destino
-        Vector3 direction = (targetPosition - transform.position).normalized;
 
-        // Moverse en la dirección calculada con la velocidad especificada
-        transform.position += direction * speed * Time.deltaTime;
+    //    transform.position += transform.forward * Time.deltaTime * speed;
 
-        // Rotar hacia la dirección del movimiento (opcional)
-        transform.rotation = Quaternion.LookRotation(direction);
-    }
+    //}
+
 }
