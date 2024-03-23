@@ -865,8 +865,8 @@ MonoBehaviour:
   target: {fileID: 683017831}
   SpeedRotation: 3
   maxSpeed: 20
-  slowingDistance: 10
-  stoppingDistance: 5
+  slowingDistance: 5
+  stoppingDistance: 0
 --- !u!114 &1197355726
 MonoBehaviour:
   m_ObjectHideFlags: 0

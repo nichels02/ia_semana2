@@ -18,6 +18,7 @@ public class TestPathFollowing : MonoBehaviour
     {
         if(path.currentPoints!=null)
         {
+            print("1");
             path.NextPoint();
             arrive.target = path.currentPoints;
         }
